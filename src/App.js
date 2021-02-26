@@ -357,10 +357,218 @@ import React from 'react';
 
   // now see what happen when change state.
 
-function App(){
-  return (<>
-    <h1>Hello Wolrd!</h1>
-  </>)
+// class ShowTime extends React.Component{
+//   constructor(props){
+//     super(props);
+//     this.state = {
+//       time : 0
+//     }
+//   }
+
+
+//   render(){
+//     let {color,message,children} = this.props
+
+//     let style = {
+//       border : '2px solid ' + color,
+//       width : '50%',
+//       minWidth : '300px',
+//       margin : '20px auto',
+//       padding : '20px',
+//       textAlign : 'center',
+//       backgroundColor : 'black',
+//       color
+//     }
+
+//     let btnStyle = {
+//       border : '2px solid '+color,
+//       padding : '10px 20px',
+//       fontSize : '20px',
+//       backgroundColor: 'black',
+//       color
+//     }
+
+//     let update = ()=>{
+//       this.setState({time:this.state.time+1});
+//     }
+
+//     return (<div style={style}>
+//       <h1>{this.state.time}</h1>
+//       <h2>{message}</h2>
+//       {children}
+//       <button onClick={update} style={btnStyle}>Add One</button>
+//     </div>)
+//   }
+// }
+
+// function App(){
+//   return (<>
+//     <ShowTime message="Hello, World!" color="crimson">
+//       <p>I am Md Tazri!</p>
+//     </ShowTime>
+
+//     <ShowTime message="Hey, World!" color="purple">
+//       <p>Do you know me?</p>
+//     </ShowTime>
+
+//     <ShowTime message="Hello, Universe!" color="tomato">
+//       <p>Can you here me?</p>
+//     </ShowTime>
+//   </>)
+// }
+
+// export default App;
+
+
+// change state and create clock
+
+// class ShowTime extends React.Component{
+//   constructor(props){
+//     super(props);
+
+//     this.state = {
+//       time : new Date().toLocaleTimeString('bn-BD')
+//     }
+//   }
+
+//   render(){
+//     let {message,color,children} = this.props;
+
+//     let style = {
+//       backgroundColor: 'black',
+//       color,
+//       width: '50%',
+//       minWidth : '300px',
+//       margin : '20px auto',
+//       padding : '20px',
+//       border : '3px solid '+color,
+//       textAlign: 'center'
+//     }
+
+//     setInterval(()=>{
+//       this.setState({time : new Date().toLocaleTimeString('bn-BD')});
+//     },1000)
+
+//     return (
+//     <div style={style}>
+//       <h1>{this.state.time}</h1>
+//       <h2>{message}</h2>
+//       {children}
+//     </div>)
+//   }
+// }
+
+// function App(){
+//   return (<>
+//     <ShowTime message="Hello, Wolrd!" color="purple">
+//       <p>I am Md Tazri!</p>
+//     </ShowTime>
+
+//     <ShowTime message="Hey, World!" color="crimson">
+//       <p>Do you know me?</p>
+//     </ShowTime>
+
+//     <ShowTime message="Hello, Universe!" color="tomato">
+//       <p>Can you here me?</p>
+//     </ShowTime>
+//   </>)
+// }
+
+// export default App;
+
+// now more learn about state
+
+// class ShowTime extends React.Component{
+//   constructor(props){
+//     super(props);
+//     this.state = {
+//       count : 0
+//     }
+//   }
+// }
+
+// it equal to 
+
+// class ShowTime extends React.Component{
+//   state = {
+//     count : 0
+//   }
+
+//   addOne = ()=>{
+//     // this.setState({
+//     //   count : this.state.count +1
+//     // })
+
+//     // console.log(this.state.count);
+
+//     // it update asynchronously
+
+//     // this.setState({
+//     //   count : this.state.count + 1
+//     // },()=>{
+//     //   console.log(this.state.count);
+//     // })
+
+//     this.setState((state,props)=>{
+//       console.log(">>>> First CallBack <<<<");
+//       console.log(state,props);
+//       console.log(">>>> End First CallBack <<<<")
+//       return {
+//         count : state.count + 1
+//       }
+//     },()=>{
+//       console.log("Sectound CallBack " , this.state.count);
+//     })
+
+//   }
+
+//   render(){
+//     let {
+//       message,
+//       color,
+//       children
+//     } = this.props
+
+//     let divStyle = {
+//       color,
+//       width: '50%',
+//       minWidth : '300px',
+//       border : '3px solid '+color,
+//       padding: '20px',
+//       margin: '20px auto',
+//       borderRadius : '10px'
+//     }
+
+//     return(
+//     <div style={divStyle}>
+//       <h1>{this.state.count}</h1>
+//       <h2>{message}</h2>
+//       {children}
+//       <button onClick={this.addOne}> Add One </button>
+//     </div>)
+//   }
+// }
+
+// function App(){
+//   return(<>
+//     <ShowTime message="Hello, World!" color="purple">
+//       <p>I am Md Tazri!</p>
+//     </ShowTime>
+
+//     <ShowTime message="Hey, Wolrd!" color="crimson">
+//       <p>Do you know me?</p>
+//     </ShowTime>
+
+//     <ShowTime message="Hey, Universe!" color="tomato">
+//       <p>Can you here me?</p>
+//     </ShowTime>
+//   </>)
+// }
+
+// export default App;
+
+function App() {
+  return <h1>Hello! World.</h1>
 }
 
 export default App;

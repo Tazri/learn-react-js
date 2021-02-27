@@ -567,8 +567,280 @@ import React from 'react';
 
 // export default App;
 
-function App() {
-  return <h1>Hello! World.</h1>
-}
+// now learn about mount and unmount method.
+// it call lifecycle methods
 
-export default App;
+// there are two life cycle methods
+// componentDidMount
+// componentWillUnmount
+
+// class ShowTime extends React.Component{
+//   state = {
+//     time : new Date().toLocaleTimeString('bn-BD')
+//   }
+
+//   // set timer id
+//   timerId = null
+
+//   // component Did mount. this method work when components mount.
+//   componentDidMount(){
+//     this.timerId = setInterval(()=>{
+//       this.tick()
+//     },1000)
+//   }
+
+//   // components will unmount. this methods unmount the components.
+//   componentWillUnmount(){
+//     clearInterval(this.timerId);
+//   }
+
+//   tick(){
+//     this.setState({
+//       time: new Date().toLocaleTimeString('bn-BD')
+//     })
+//   }
+
+//   render(){
+
+//     let {
+//       message,
+//       color,
+//       children
+//     } = this.props;
+
+//     let divStyle = {
+//       width : '300px',
+//       minWidth : '50%',
+//       margin : '20px auto',
+//       padding : '20px',
+//       border : '2px solid ' + color,
+//       color,
+//       backgroundColor : 'black',
+//       textAlign : 'center'
+//     }
+
+//     return(
+//     <div style={divStyle}>
+//       <h1>{this.state.time}</h1>
+//       <h2>{message}</h2>
+//       {children}
+//     </div>)
+//   }
+
+// }
+
+// function App(){
+//   return (<>
+//     <ShowTime message="Hello, World!" color="crimson">
+//       <p>I am Md Tazri.</p>
+//     </ShowTime>
+
+//     <ShowTime message="Hey, Wolrd!" color="purple">
+//       <p>Do you know me?</p>
+//     </ShowTime>
+
+//     <ShowTime message="Hey, Universe!" color="tomato">
+//       <p>Can you here me?</p>
+//     </ShowTime>
+//   </>)
+// }
+
+// export default App;
+
+// understanding munt and unmunt
+
+
+// class Com extends React.Component{
+//   state = {
+//     count : 0
+//   }
+
+//   update = ()=>{
+//     this.setState(prevState=>{
+//       return {
+//         count : prevState.count +1
+//       }
+//     })
+//   }
+
+//   // mount components
+//   componentDidMount(){
+//     this.con = setInterval(()=>this.update(),1000);
+//   }
+
+//   // unmount components
+//   componentWillUnmount(){
+//     clearInterval(this.con);
+//   }
+
+//   render(){
+//     let divStyle = {
+//       border : '2px solid purple',
+//       color: 'red',
+//       fontSize: '30px',
+//       padding: '20px',
+//       textAlign : 'center'
+//     }
+//     return(
+//     <div style={divStyle}>
+//       <h1>{this.state.count}</h1>
+//     </div>)
+//   }
+// }
+
+// export default function App(){
+//   return(
+//   <>
+//     <Com />
+//   </>
+//   );
+// }
+
+// how to handaling event in react?
+
+// in react we use event in camelCase syntax
+
+// exmple
+
+
+// class Con extends React.Component{
+//   state = {
+//     count : 0
+//   }
+
+//   update = ()=>{
+//     this.setState(prevState=>{
+//       return {
+//         count : prevState.count + 1
+//       }
+//     });
+//   }
+
+//   render(){
+//     let updateTwo = ()=>{
+//       this.update();
+//       this.update();
+//     }
+
+//     return(
+//       <div>
+//         <h1>{this.state.count}</h1>
+//         <button onClick={updateTwo}>Add One</button>
+//       </div>
+//       )
+//   }
+// }
+
+
+// let App = ()=>{
+//   return (<>
+//     <Con />
+//   </>)
+// }
+
+// export default App;
+
+
+// how to prvent default in react
+
+
+// export default function App(){
+//   return(<>
+//     <a href="#" onClick={e=>{
+//       e.preventDefault();
+//       console.log("clicked me");
+//     }} >Go to</a>
+//   </>)
+// }
+
+// toggle button in react
+
+// class ToggleButton extends React.Component{
+//   state = {
+//     status : true
+//   }
+
+//   toggle(){
+//     this.setState(prevState=>{
+//       return {
+//         status : !prevState.status
+//       }
+//     })
+//   }
+
+//   render(){
+//     let {
+//       on = 'On',
+//       off = 'Off',
+//       message,
+//       color = 'black'} = this.props;
+
+//     let divStyle = {
+//       color,
+//       border: '2px solid '+color,
+//       margin: '20px auto',
+//       padding: '20px',
+//       textAlign:'center',
+//       width: '40%',
+//       minWidth:'300px'
+//     }
+
+//     let btnStyle = {
+//       padding: '10px 20px',
+//       backgroundColor : color,
+//       color : 'white',
+//       border: '2px solid transparent'
+//     }
+
+//     return(
+//     <div style={divStyle}>
+//       <h1>{message}</h1>
+//       <button style={btnStyle} onClick={()=>this.toggle()}>
+//         {this.state.status ? on : off}
+//       </button>
+//     </div>
+//     )
+//   }
+// }
+
+// export default function App(){
+//   return (
+//   <>
+//     <ToggleButton 
+//       on="ok"
+//       off="not ok"
+//       message="Hello, World!"
+//     />
+
+//     <ToggleButton
+//       on="ON"
+//       off="OFF"
+//       message="Whats Up, World!"
+//       color="tomato"
+//       />
+//   </>)
+// }
+
+// class ShowThis extends React.Component{
+//   handleClick = ()=>{
+//     console.log("This is ",this);
+//   }
+
+//   render(){
+//     return (
+//     <button onClick={this.handleClick}>
+//       Click Me
+//     </button>
+//     )
+//   }
+// }
+
+// export default function App(){
+//   return(<>
+//     <ShowThis />
+//   </>)
+// }
+
+export default function App(){
+  return <h1>Hello, World!</h1>
+}

@@ -841,6 +841,222 @@ import React from 'react';
 //   </>)
 // }
 
-export default function App(){
-  return <h1>Hello, World!</h1>
+// now try to conditional rendering 
+
+// example of conditional render
+
+
+// function LogIn(props){
+//   return (<h1 style={props.style}>Welcome Back User!</h1>)
+// }
+
+// function SingIn(props) {
+//   return <h1 style={props.style}>Please Sing in our site.</h1>
+// }
+
+// function Greeting(props) {
+//   let {
+//     isLogIn,
+//     style
+//   } = props;
+
+//   if(isLogIn){
+//     return <LogIn style={style}/>
+//   } 
+
+//   return <SingIn style={style} />
+// }
+
+// let App = ()=>{
+//   let divStyle = {
+//     width : '50%',
+//     minWidth : '300px',
+//     padding : '20px',
+//     margin : '20px auto',
+//     textAlign : 'center',
+//     color : 'crimson'
+//   }
+
+//   return(
+//   <>
+//     <Greeting isLogIn={false} style={divStyle} />
+//     <Greeting isLogIn={true} style={divStyle} />
+//   </>
+//   )
+// }
+
+// export default App;
+
+// another conditioanl rendering example
+
+// function LogInBtn(props){
+//   return(<button onClick={props.func}>
+//     Log In
+//   </button>)
+// }
+
+// function LogOutBtn(props) {
+//   return(<button onClick={props.func}>
+//     Log Out
+//   </button>)
+// }
+
+// class LoginControl extends React.Component{
+//   state = {
+//     isLogIn : false
+//   }
+
+//   logInClick = ()=>{
+//     this.setState({isLogIn : false});
+//   }
+
+//   logOutClick = ()=>{
+//     this.setState({isLogIn : true});
+//   }
+
+//   render(){
+//     let button;
+//     if(this.state.isLogIn){
+//       button = <LogInBtn func={this.logInClick} />
+//     }else{
+//       button = <LogOutBtn func={this.logOutClick} />
+//     }
+
+//     return button
+//   }
+
+// }
+
+// export default function app(){
+//   return(<>
+//     <LoginControl />
+//   </>)
+// }
+
+// inline condition
+
+// function MailBox(props){
+//   const unreadMessage = props.message;
+
+//   return(<div>
+//     <h1>Hello, User!</h1>
+//     {unreadMessage.length > 0 && <h2>
+//       You have {unreadMessage.length} unread messages.
+//     </h2>}
+
+//     {
+//       unreadMessage.length > 0 &&<div>
+//         {unreadMessage.map(m=><h3 key={unreadMessage.indexOf(m)}>{m}</h3>)}
+//       </div>
+//     }
+//   </div>)
+// }
+
+// class App extends React.Component{
+//   state = {
+//     message : ['Hello, World!','Tazri','Hello, hello']
+//   }
+
+//   render(){
+//     return (<>
+//       <MailBox message={this.state.message} />
+//     </>)
+//   }
+// }
+
+// export default App;
+
+// preventing components from rendering
+
+// let Warning = props=>{
+//   if(!props.warn){
+//     return null;
+//   }else{
+//     let style = {
+//       backgroundColor: "darkred",
+//       color : "white",
+//       textAlign : "center",
+//       margin : "20px 0px"
+//     }
+//     return <h2 style={style}>This is warning!</h2>
+//   }
+// }
+
+
+// class App extends React.Component{
+//   state = {
+//     warn : false
+//   }
+
+//   change = ()=>{
+//     this.setState({warn : !this.state.warn})
+//   }
+
+//   render(){
+//     return(<>
+//       <button onClick={this.change} 
+//       >{this.state.warn? 'Warning' : 'All Ok'}</button>
+
+//       <Warning warn={this.state.warn} />
+//     </>)
+//   }
+// }
+
+// export default App;
+
+
+// keys and list
+
+let MailBox = props =>{
+  let messages = props.message;
+  
+  let h3Style = {
+    backgroundColor: 'purple',
+    color: 'white',
+    margin: '20px 20px',
+    padding : '20px 10px',
+    textAlign : 'right',
+    borderRadius : "10px"
+  }
+
+  let messageElement = messages.map(message =>{
+    return (<h3 style={h3Style}
+      key={messages.indexOf(message)}>{message}</h3>)
+  })
+
+  return (
+  <div>
+    <h1 style={{
+      color : 'purple',
+    }}>Hello, User!</h1>
+
+    <h2 style={{color:'darkred',textAlign:'center'}}>You have {messages.length} unread message</h2>
+    <div className="cointainer">
+      {messageElement}
+    </div>
+  </div>
+  )
+  
 }
+
+class App extends React.Component{
+  state = {
+    message : [
+      'Hello, World!',
+      'I am Md Tazri.',
+      'Hey, Universe!',
+      'Can you here me?',
+      'Hey, World!',
+      'Do you know me?'
+    ]
+  }
+
+  render(){
+    return(<>
+      <MailBox message={this.state.message} />
+    </>)
+  }
+}
+
+export default App;
+

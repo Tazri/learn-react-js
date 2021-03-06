@@ -1007,56 +1007,226 @@ import React from 'react';
 
 // keys and list
 
-let MailBox = props =>{
-  let messages = props.message;
+// let MailBox = props =>{
+//   let messages = props.message;
   
-  let h3Style = {
-    backgroundColor: 'purple',
-    color: 'white',
-    margin: '20px 20px',
-    padding : '20px 10px',
-    textAlign : 'right',
-    borderRadius : "10px"
-  }
+//   let h3Style = {
+//     backgroundColor: 'purple',
+//     color: 'white',
+//     margin: '20px 20px',
+//     padding : '20px 10px',
+//     textAlign : 'right',
+//     borderRadius : "10px"
+//   }
 
-  let messageElement = messages.map(message =>{
-    return (<h3 style={h3Style}
-      key={messages.indexOf(message)}>{message}</h3>)
-  })
+//   let messageElement = messages.map(message =>{
+//     return (<h3 style={h3Style}
+//       key={messages.indexOf(message)}>{message}</h3>)
+//   })
 
-  return (
-  <div>
-    <h1 style={{
-      color : 'purple',
-    }}>Hello, User!</h1>
+//   return (
+//   <div>
+//     <h1 style={{
+//       color : 'purple',
+//     }}>Hello, User!</h1>
 
-    <h2 style={{color:'darkred',textAlign:'center'}}>You have {messages.length} unread message</h2>
-    <div className="cointainer">
-      {messageElement}
-    </div>
-  </div>
-  )
+//     <h2 style={{color:'darkred',textAlign:'center'}}>You have {messages.length} unread message</h2>
+//     <div className="cointainer">
+//       {messageElement}
+//     </div>
+//   </div>
+//   )
   
-}
+// }
+
+// class App extends React.Component{
+//   state = {
+//     message : [
+//       'Hello, World!',
+//       'I am Md Tazri.',
+//       'Hey, Universe!',
+//       'Can you here me?',
+//       'Hey, World!',
+//       'Do you know me?'
+//     ]
+//   }
+
+//   render(){
+//     return(<>
+//       <MailBox message={this.state.message} />
+//     </>)
+//   }
+// }
+
+// export default App;
+
+// form in react
+
+// class Form extends React.Component{
+//   render(){
+//     return(<form>
+//       <label htmlFor="name">
+//         Name: 
+//         <input 
+//           type="text"
+//           placeholder="Please Type your name"
+//           />
+//       </label>
+
+//       <input type="submit" value="Submit"/>
+//     </form>)
+//   }
+// }
+
+// export default function app(){
+//   return (<>
+//     <Form />
+//   </>)
+// }
+
+// but this form is useless in react
+
+// now learn how to use form in react
+
+// it call controlled components
+
+// in react input field must be combine with state. 
+// and this called single source truth in react.
+// now exapme this.
+
+// class App extends React.Component{
+//   state = {
+//     inputValue : '',
+//     messages : [],
+//     mId : 0
+//   }
+
+//   onChangeHandler = event => {
+//     this.setState({
+//       inputValue : event.target.value
+//     })
+//   }
+
+//   onSubmitHandler = event =>{
+//     event.preventDefault();
+
+//     let m = this.state.inputValue;
+//     this.setState(prev =>{
+//       return {
+//         messages : [...prev.messages,m]
+//       }
+//     },()=>{
+//       this.setState({
+//         inputValue : ''
+//       })
+//     })
+
+//   }
+
+//   render(){
+//     let mElement = this.state.messages.map(m=><h2 key={this.state.messages.indexOf(m)}>{m}</h2>)
+//     return(
+//     <>
+//     <form onSubmit={this.onSubmitHandler}>
+//       <label htmlFor="name">
+//         Messge: <input 
+//           type="text"
+//           placeholder="write your message..."
+//           value={this.state.inputValue}
+//           onChange={this.onChangeHandler}
+//           />
+//       </label>
+//       {this.state.inputValue && <h2>{this.state.inputValue}</h2>}
+//       <input type="submit" value="Add"/>
+//     </form>
+
+//     <div className="container">
+//       <h1>Message</h1>
+//       {mElement}
+//     </div>
+//     </>)
+//   }
+// }
+
+// export default App;
+
+// select input in react
+
+
+// class App extends React.Component{
+//   state = {
+//     os : 'Mint'
+//   }
+
+
+//   onChangeSelect = event =>{
+//     this.setState({
+//       os : event.target.value
+//     })
+//   }
+
+//   render(){
+//     return(<>
+//       <form>
+//         <label htmlFor="os">
+//           Pick Your Favourite Os:
+//           <select
+//            name="os" 
+//            id="os"
+//            onChange={this.onChangeSelect}
+//            value={this.state.os}>
+//             <option value="windows">Windows</option>
+//             <option value="Ubuntu">Ubuntu</option>
+//             <option value="Mint">Mint</option>
+//             <option value="Mac">Mac</option>
+//             <option value="Sulas">Sulas</option>
+//           </select>
+//         </label>
+
+//         <input type="submit" value="submit" />
+//       </form>
+//       <h1>Your Favourite Os Is : {this.state.os}</h1>
+//     </>)
+//   }
+// }
+
+// export default App;
+
+// multiple input controll
 
 class App extends React.Component{
   state = {
-    message : [
-      'Hello, World!',
-      'I am Md Tazri.',
-      'Hey, Universe!',
-      'Can you here me?',
-      'Hey, World!',
-      'Do you know me?'
-    ]
+    isGoing : false,
+    numberOfGuest : 0
+  }
+
+  handleChange = event =>{
+    const target = event.target;
+    const value = event.target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+    this.setState({
+      [name] : value
+    })
   }
 
   render(){
     return(<>
-      <MailBox message={this.state.message} />
+    <form>
+      <label htmlFor="isGoing">
+        This is Going : 
+        <input type="checkbox" name="isGoing" id="isGoing"/>
+      </label>
+
+      <label htmlFor="gust">
+        How many guest here :
+        <input type="number" name="numberOfGuest" id="gust"/>
+      </label>
+    </form>
+
+    <h1>{this.state.isGoing ? 'This is Going' : 'This is not Going'}</h1>
+    <h1>The guest number is : {this.state.numberOfGuest}</h1>
     </>)
   }
 }
 
 export default App;
-

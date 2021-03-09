@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useEffect, useState } from 'react';
 /**
  * Now understanding jsx.
  * JSX short of JavaScript XML
@@ -1385,6 +1385,55 @@ import React from 'react';
 
 // export default App;
 
+// export default function App(){
+//   return <h1>Hello World!</h1>
+// }
+
+// try to use compostion components in react.
+// because it run easy and faster then inheritance.
+
+// now learn about react hook.
+
+// what is react hook?
+
+// hooks are new addition in 16.8 . They let you use a state and other React features without writing a class.
+
+// example of hook
+
+// export default function App(){
+//   const [count,setCount] = useState(0);
+
+//   function update(){
+//     setCount(count + 1);
+//   }
+
+//   return(<>
+//     <div>
+//       <h1>{count}</h1>
+//       <button onClick={update}>Click to Update Count</button>
+//     </div>
+//   </>)
+// }
+
+// see another example here
+
+// export default function App(){
+//   const [count,setCount] = useState(0);
+
+//   useEffect(()=>{
+//     document.title = `c :- ${count}`;
+//   });
+
+//   return(<>
+//     <div>
+//       <h1>{count}</h1>
+//       <button onMouseOverCapture={()=>setCount(count+1)}>Click Me</button>
+//     </div>
+//   </>)
+// }
+
 export default function App(){
-  return <h1>Hello World!</h1>
+  return(<>
+    <h1>Now I complate react besic thing.</h1>
+  </>)
 }

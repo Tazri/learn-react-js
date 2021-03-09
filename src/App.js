@@ -1194,39 +1194,197 @@ import React from 'react';
 
 // multiple input controll
 
-class App extends React.Component{
-  state = {
-    isGoing : false,
-    numberOfGuest : 0
-  }
+// class App extends React.Component{
+//   state = {
+//     isGoing : false,
+//     numberOfGuest : 0
+//   }
 
-  handleChange = event =>{
-    const target = event.target;
-    const value = event.target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-    this.setState({
-      [name] : value
-    })
-  }
+//   handleChange = event =>{
+//     const target = event.target;
+//     const value = event.target.type === 'checkbox' ? target.checked : target.value;
+//     const name = target.name;
+//     this.setState({
+//       [name] : value
+//     })
+//   }
 
-  render(){
-    return(<>
-    <form>
-      <label htmlFor="isGoing">
-        This is Going : 
-        <input type="checkbox" name="isGoing" id="isGoing"/>
-      </label>
+//   render(){
+//     let element;
+//     if(this.state.isGoing){
+//       element = <h1>This is going</h1>
+//     }else{
+//       element = <h1>This is not going</h1>
+//     }
 
-      <label htmlFor="gust">
-        How many guest here :
-        <input type="number" name="numberOfGuest" id="gust"/>
-      </label>
-    </form>
+//     return(<>
+//     <form>
+//       <label htmlFor="isGoing">
+//         This is Going : 
+//         <input 
+//           type="checkbox" 
+//           name="isGoing" 
+//           id="isGoing"
+//           checked = {this.state.isGoing}
+//           onChange={this.handleChange}
+//           />
+//       </label>
 
-    <h1>{this.state.isGoing ? 'This is Going' : 'This is not Going'}</h1>
-    <h1>The guest number is : {this.state.numberOfGuest}</h1>
-    </>)
-  }
+//       <label htmlFor="gust">
+//         How many guest here :
+//         <input 
+//           type="number" 
+//           name="numberOfGuest" 
+//           id="gust"
+//           value={this.state.numberOfGuest}
+//           onChange={this.handleChange}
+//           />
+//       </label>
+//     </form>
+
+//     {/* <h1>{this.state.isGoing ? 'This is Going' : 'This is not Going'}</h1> */}
+//     {element}
+//     <h1>The guest number is : {this.state.numberOfGuest}</h1>
+//     </>)
+//   }
+// }
+
+// export default App;
+
+// understanding state and lifting in react js.
+
+// function IsBoiling({c}){
+//   if(c >=100){
+//     return <h1>Is boiling.</h1>
+//   }
+
+//   return <h1>Is not boiling</h1>
+// }
+
+// class App extends React.Component{
+//   state = {
+//     temperature : ''
+//   }
+
+//   handleChange = e=>{
+//     this.setState({temperature : e.target.value})
+//   }
+
+//   render(){return(<>
+//     <fieldset>
+//       <legend>Enter Temperature in Celcius:</legend>
+//       <input 
+//         type="number"
+//         onChange={e=>{this.setState({temperature : e.target.value})}}
+//         value = {this.state.temperature}
+//         />
+//         <IsBoiling c={parseFloat(this.state.temperature)} />
+//     </fieldset>
+//   </>)}
+// }
+// export default App;
+
+// understanding lifting deeply
+
+// let scalesName = {
+//   c : 'Celcious',
+//   f : 'Fahrenheit'
+// }
+
+// converter function
+// function toCelcious(f){
+//   return (f-32)*5/9;
+// }
+
+// function toFahrenheit(c){
+//   return (c*9/5)+32;
+// }
+
+// function tryConvert(t,converter){
+//   const input = parseFloat(t);
+//   if(Number.isNaN(input)){
+//     return '';
+//   }
+
+//   const output = converter(input);
+//   const rounded = Math.round(output*10000) /10000
+//   return rounded.toString();
+// }
+
+// class TemperatureInput extends React.Component{
+
+//   render(){
+//     let {
+//       temperature,
+//       scale,
+//       onChangeHandler
+//     } = this.props;
+
+//     let style = {
+//       margin : '20px auto',
+//       padding : '20px 10px',
+//       minWidth : '300px',
+//       width : '50%',
+//       border: '2px solid purple',
+//       borderRadius : '5px' ,
+//       color: 'purple'
+//     }
+
+//     let scaleName = scale === 'f' ? 'Fahrenheit':'Celcious';
+
+//     return(<fieldset style={style}>
+//       <legend>Enter temperature in {scaleName}:</legend>
+//       <input
+//         onChange={()=>onChangeHandler(temperature)}
+//         value={temperature}
+//         />
+//     </fieldset>)
+//   }
+// }
+
+// class App extends React.Component{
+//   state = {
+//     temperature :0,
+//     scale : 'c'
+//   }
+
+//   handleCelChange = t=>{
+//     console.log(t);
+//     this.setState({temperature:t,scale:'c'});
+//   }
+
+//   handleFarChange = t=>{
+//     console.log(t);
+//     this.setState({temperature : t,scale:'f'});
+//   }
+
+//   render(){
+//     let {
+//       temperature,
+//       scale
+//     } = this.state;
+
+//     let celcious = scale === 'c' ? this.state.temperature : tryConvert(temperature,toCelcious);
+
+//     let fahrenheit = scale === 'f' ? this.state.temperature : tryConvert(temperature,toFahrenheit);
+
+//     return(<>
+//       <TemperatureInput 
+//         scale='c'
+//         temperature={celcious}
+//         onChangeHandler={this.handleCelChange} />
+
+//       <TemperatureInput 
+//         scale='f'
+//         temperature={fahrenheit}
+//         onChangeHandler={this.handleFarChange} />
+
+//     </>)
+//   }
+// }
+
+// export default App;
+
+export default function App(){
+  return <h1>Hello World!</h1>
 }
-
-export default App;

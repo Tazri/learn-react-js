@@ -1,4 +1,4 @@
-import React,{ useEffect, useState } from 'react';
+import React,{ useEffect, useState, createContext, Component } from 'react';
 /**
  * Now understanding jsx.
  * JSX short of JavaScript XML
@@ -1432,8 +1432,188 @@ import React,{ useEffect, useState } from 'react';
 //   </>)
 // }
 
+// export default function App(){
+//   return(<>
+//     <h1>Now I complate react besic thing.</h1>
+//   </>)
+// }
+
+// try to understand contex
+
+// let Contex = createContext('Black');
+
+// export default class App extends Component{
+//   state = {
+
+//   }
+
+//   render(){
+//     console.log(Contex);
+//     return(<>
+//       <h2>Hello World!</h2>
+//     </>)
+//   }
+// }
+
+// try to understand deeply
+
+// let Contex = createContext('Black');
+
+// export default class App extends Component{
+//   state = {
+
+//   }
+
+//   render(){
+//     console.log(Contex);
+//     return(<>
+//       <Contex.Provider value={'Crimson'}>
+//         <h1>Hello World</h1>
+//         <ShowMe />
+//       </Contex.Provider>
+//     </>)
+//   }
+// }
+
+// function ShowMe(){
+//   return(
+//     <Contex.Consumer>
+//       {(value)=>{
+//         console.log("Value: ");
+//         console.log(value)
+//         console.log(Contex.Provider);
+//         return(<>
+//           <h2>Hello World! Again.</h2>
+//         </>)
+//       }}
+//     </Contex.Consumer>
+//   )
+// }
+
+// another way use contex in class base components
+
+// let Contex = createContext('Noting');
+
+// export default class App extends Component{
+//   state = {
+//     count : 0
+//   }
+
+//   render(){
+//     return(<>
+//     <Contex.Provider value={this.state}>
+//       <h1>Hello World!</h1>
+//       <ShowMe />
+//     </Contex.Provider>
+//     </>)
+//   }
+// }
+
+// class ShowMe extends Component{
+//   render(){
+//     return (<Contex.Consumer>
+//       {(value)=>{
+//         console.log(value);
+//         return(<>
+//           <h1>Hello, World! Again.</h1>
+//         </>)
+//       }}
+//     </Contex.Consumer>)
+//   }
+// }
+
+// ShowMe.contextType = Contex;
+
+// more thing about contex
+
+// const Contex  = createContext('Unknow');
+
+// const {Provider,Consumer} = Contex;
+
+// export default class App extends Component{
+//   state = {
+//     count : 0
+//   }
+
+//   update = ()=>{
+//     this.setState({count : this.state.count + 1});
+//   }
+
+//   render(){
+//     return(<>
+//       <Provider value={{...this.state,update : this.update}}>
+//         <h1>Welcome</h1>
+//         <ShowMe/>
+//         <ShowMeOne />
+//         <ShowMeTwo />
+//         <ShowMeThree />
+//       </Provider>
+//     </>)
+//   }
+// }
+
+// function ShowMe(){
+//   return(<Consumer>
+//     {({count,update})=>{
+//       return(<>
+//         <h2>Count = {count}</h2>
+//         <button onClick={update}>Update</button>
+//       </>)
+//     }}
+//   </Consumer>)
+// }
+
+// class ShowMeOne extends Component{
+//   render(){
+//     return(<Consumer>
+//       {({count,update})=>{
+//         return(<>
+//           <hr />
+//           <h1>Show Me One</h1>
+//           <h2>Count = {count}</h2>
+//           <button onClick={update}>Update Again</button>
+//         </>)
+//       }}
+//     </Consumer>)
+//   }
+// }
+
+// class ShowMeTwo extends Component{
+//   static contextType = Contex;
+//   render(){
+//     return(
+//     <Consumer>
+//       {({count,update})=>{
+//         return(<>
+//           <hr />
+//           <h1>Show Me Two</h1>
+//           <h2>Count = {count}</h2>
+//           <button onClick={update}>Update Again :)</button>
+//         </>)
+//       }}
+//     </Consumer>)
+//   }
+// }
+
+
+// class ShowMeThree extends Component{
+//   render(){
+//     return(
+//     <Consumer>
+//       {({count,update})=>{
+//         return(<>
+//           <hr />
+//           <h1>Show Me Three</h1>
+//           <h2>Count == {count}</h2>
+//           <button onClick={update}>Click Me :)</button>
+//         </>)
+//       }}
+//     </Consumer>)
+//   }
+// }
+
+// ShowMeThree.contextType = Contex;
+
 export default function App(){
-  return(<>
-    <h1>Now I complate react besic thing.</h1>
-  </>)
+  return(<h1>Hello, World!</h1>)
 }
